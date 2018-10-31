@@ -15,14 +15,14 @@ class CreatePreguntasTable extends Migration
     {
         Schema::create('preguntas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('texto');
+            $table->text('texto');
 
             $table->unsignedInteger('tema_id');
             $table->foreign('tema_id')
                   ->references('id')
                   ->on('temas')
                   ->onDelete('cascade');
-                  
+
             $table->string('referencia');
             $table->timestamps();
         });

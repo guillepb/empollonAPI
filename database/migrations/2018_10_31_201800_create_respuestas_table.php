@@ -15,14 +15,14 @@ class CreateRespuestasTable extends Migration
     {
         Schema::create('respuestas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('texto');
+            $table->text('texto');
 
             $table->unsignedInteger('pregunta_id');
             $table->foreign('pregunta_id')
                   ->references('id')
                   ->on('preguntas')
                   ->onDelete('cascade');
-                  
+
             $table->boolean('es_correcta');
             $table->timestamps();
         });

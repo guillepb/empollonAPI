@@ -42,7 +42,7 @@ class Tema extends Model
      */
     public function nucleos()
     {
-        return $this->belongsToMany('App\Nucleo');
+        return $this->belongsToMany('App\Nucleo')->withTimestamps();
     }
 
 }

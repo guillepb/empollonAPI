@@ -42,6 +42,6 @@ class Nucleo extends Model
      */
     public function temas()
     {
-        return $this->belongsToMany('App\Tema');
+        return $this->belongsToMany('App\Tema')->withTimestamps();
     }
 }

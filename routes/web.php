@@ -1,5 +1,10 @@
 <?php
 
+use App\Dependencia;
+use App\Nucleo;
+use App\Pregunta;
+
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -13,4 +18,16 @@
 
 $router->get('/', function () use ($router) {
     return $router->app->version();
+});
+
+$router->get('dependencia[s]', function () {
+    return response()->json(Dependencia::with('nucleos')->get());
+});
+
+$router->get('nucleo/{id}', function ($id) {
+    return response()->json(Nucleo::with('temas')->where('id', $id)->get());
+});
+
+$router->get('tema/{id}/preguntas', function ($id) {
+    return response()->json(Pregunta::with('respuestas')->where('tema_id', $id)->get());
 });

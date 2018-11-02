@@ -2,6 +2,7 @@
 
 use App\Dependencia;
 use App\Nucleo;
+use App\Tema;
 use App\Pregunta;
 
 
@@ -24,8 +25,8 @@ $router->get('dependencia[s]', function () {
     return response()->json(Dependencia::with('nucleos')->get());
 });
 
-$router->get('nucleo/{id}', function ($id) {
-    return response()->json(Nucleo::with('temas')->where('id', $id)->get());
+$router->get('nucleo/{id}/temas', function ($id) {
+    return response()->json(Nucleo::find($id)->temas()->get());
 });
 
 $router->get('tema/{id}/preguntas', function ($id) {
